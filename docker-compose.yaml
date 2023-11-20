@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  crud_fastapi_database:
+    image: postgres:latest
+    container_name: postgres-db
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_DB: fastapi
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
