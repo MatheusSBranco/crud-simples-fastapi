@@ -1,5 +1,5 @@
 from sqlmodel import Session, SQLModel, create_engine
-from models import Book
+from .models import Book
 
 engine = create_engine("postgresql://myuser:mypassword@localhost:5432/fastapi")
 
@@ -13,8 +13,7 @@ def get_book(session: Session, book_id: int):
     return session.get(Book, book_id)
 
 def get_all_books(session: Session):
-    with get_session() as session:
-        return session.query(Book).all()
+    return session.query(Book).all()
 
 def create_book(session: Session, book: Book):
     db_book = Book(**book.dict())

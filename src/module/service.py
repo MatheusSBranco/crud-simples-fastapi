@@ -1,6 +1,6 @@
 from sqlmodel import Session
-from repository import get_book, get_all_books, create_book, update_book, delete_book
-from models import Book
+from .repository import get_book, get_all_books, create_book, update_book, delete_book
+from .models import Book
 
 def read_book(db: Session, book_id: int):
     return get_book(db, book_id)
