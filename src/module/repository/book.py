@@ -1,5 +1,5 @@
 from sqlmodel import Session, SQLModel, create_engine
-from .models import Book
+from ..models.book import Book
 
 engine = create_engine("postgresql://myuser:mypassword@localhost:5432/fastapi")
 

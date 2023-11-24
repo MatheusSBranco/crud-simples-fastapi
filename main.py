@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 
-from src.module import controller
+from src.module.controller.book import controller
 
 app = FastAPI()
 
-app.include_router(controller.controller)
+app.include_router(controller)
 
 @app.get("/")
 def root():

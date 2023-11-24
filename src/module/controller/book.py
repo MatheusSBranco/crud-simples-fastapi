@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlmodel import Session
 
-from .repository import get_session
-from .service import read_book, read_all_books, create_a_book, update_a_book, delete_a_book
-from .models import Book
+from ..repository.book import get_session
+from ..service.book import read_book, read_all_books, create_a_book, update_a_book, delete_a_book
+from ..models.book import Book
 
 controller = APIRouter()
         
