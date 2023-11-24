@@ -6,8 +6,14 @@ engine = create_engine("postgresql://myuser:mypassword@localhost:5432/fastapi")
 SQLModel.metadata.create_all(engine)
 
 def get_session():
-    with Session(engine) as session:
-        yield session
+    try:
+        with Session(engine) as session:
+            yield session
+    except Exception as err:
+        print(err)
+        session.rollback()   
+    finally:
+        session.close()
 
 def get_book(session: Session, book_id: int):
     return session.get(Book, book_id)
